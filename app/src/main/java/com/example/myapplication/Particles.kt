@@ -27,14 +27,14 @@ fun Particles(
     emoji: String,
     visible: Boolean
 ) {
-
     AnimatedVisibility(
         visible = visible,
         enter = slideInVertically(
             initialOffsetY = { it },
             animationSpec = tween(
-                durationMillis = MAX_ANIMATION_DURATION.toInt(),
-                easing = LinearEasing
+                durationMillis = MAX_ANIMATION_DURATION.toInt() - 300,
+                easing = LinearEasing,
+                delayMillis = 300
             )
         ),
         exit = ExitTransition.None
@@ -57,8 +57,7 @@ fun Particles(
         ) { it }
 
         Layout(
-            modifier = modifier
-                .padding(bottom = 200.dp),
+            modifier = modifier.padding(bottom = 50.dp),
             content = {
                 for (i in 0 until quantity) {
                     Particle(particles[i])
@@ -163,9 +162,9 @@ private const val MIN_PARTICLE_SIZE = 1f
 private const val MAX_PARTICLE_SIZE = 2.6f
 private const val MIN_ANIMATION_DURATION = 1200f
 private const val MAX_ANIMATION_DURATION = 1500f
-private const val PARTICLE_TEXT_SIZE = 12
+private const val PARTICLE_TEXT_SIZE = 14
 private const val MIN_HEIGHT = 300
-private const val MAX_HEIGHT = 600
+private const val MAX_HEIGHT = 800
 
 data class ParticleModel(
     val verticalFraction: Float,

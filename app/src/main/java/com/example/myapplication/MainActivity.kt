@@ -3,10 +3,7 @@ package com.example.myapplication
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -26,17 +23,23 @@ class MainActivity : ComponentActivity() {
             ) {
                 var showParticles by remember { mutableStateOf(false) }
 
-                Particles(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(400.dp),
-                    quantity = 22,
-                    emoji = "\uD83D\uDD25",
-                    visible = showParticles
-                )
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Particles(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(400.dp),
+                        quantity = 22,
+                        emoji = "\uD83D\uDD25",
+                        visible = showParticles
+                    )
 
-                Button(
-                    onClick = { showParticles = !showParticles }) {
+                    Spacer(modifier = Modifier.size(100.dp))
+
+                    Button(
+                        onClick = { showParticles = !showParticles }) {
+                    }
                 }
             }
         }
