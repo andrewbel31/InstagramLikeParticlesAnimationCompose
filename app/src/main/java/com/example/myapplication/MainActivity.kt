@@ -3,6 +3,7 @@ package com.example.myapplication
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
 import androidx.compose.material.Text
@@ -39,8 +40,9 @@ class MainActivity : ComponentActivity() {
                     Spacer(modifier = Modifier.size(100.dp))
 
                     Button(
+                        modifier = Modifier.animateContentSize(),
                         onClick = { showParticles = !showParticles }) {
-                        Text(text = "start")
+                        Text(text = if (!showParticles) "start" else "reset")
                     }
                 }
             }
